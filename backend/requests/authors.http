@@ -1,0 +1,33 @@
+@baseUrl=http://localhost:3001/authors
+
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}/66acc62e229d23f0a20f8a47
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "name": "gente10",
+    "surname": "acaso10",
+    "email": "mail10@gmail.com",
+    "birthDate": "2024-01-01",
+    "avatar": "none"
+}
+
+###
+PUT {{baseUrl}}/66acce5782a7234923d8bd85
+Content-Type: application/json
+
+{
+    "name": "gnappoboh",
+    "surname": "boh",
+    "email": "p.boh@gmail.com",
+    "birthDate": "2024-01-01",
+    "avatar": "none"
+}
+
+###
+DELETE {{baseUrl}}/66acce5782a7234923d8bd85
