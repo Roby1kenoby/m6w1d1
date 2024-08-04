@@ -1,0 +1,41 @@
+@baseUrl=http://localhost:3001/blogPosts
+
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}/66af552abf036eedfb8c1e1b
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "category": "Sport",
+    "title": "Articolo 11 creato sempre da tizio",
+    "cover": "urlCover" ,
+    "readTime": {
+        "value": 10,
+        "unit": "min"
+    },
+    "authorId": "66ad2727c5b6282c3722d3a3",
+    "content": "Articolo 11 molto lungo ciao."
+}
+
+###
+PUT {{baseUrl}}/66af5567bf036eedfb8c1e25
+Content-Type: application/json
+
+{
+    "category": "Sport",
+    "title": "POst modificato",
+    "cover": "urlCover" ,
+    "readTime": {
+        "value": 10,
+        "unit": "min"
+    },
+    "authorId": "66acc62e229d23f0a20f8a47",
+    "content": "Testo modificato."
+}
+
+###
+DELETE {{baseUrl}}/66af5567bf036eedfb8c1e25

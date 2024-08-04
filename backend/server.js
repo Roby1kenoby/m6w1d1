@@ -1,5 +1,6 @@
 import express from 'express'
 import authorsRouter from './routes/authors.router.js'
+import postsRouter from './routes/posts.router.js'
 // import environment
 import 'dotenv/config'
 // import per il DB
@@ -35,6 +36,7 @@ mongoDbConnection()
 // prefisso authors che verrà usato su tutte le rotte sottostanti
 // definite nel file route apposito
 server.use('/authors', authorsRouter)
+server.use('/blogPosts', postsRouter)
 
 server.listen(port, () => {
     console.log(`Server attivo sulla porta ${port}`)
