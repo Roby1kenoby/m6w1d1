@@ -11,7 +11,7 @@ router.get('/', async (req,res) => {
 
     // parametri per la paginazione
     const page = req.query.page || 1
-    const postsPerPage = req.query.postsPerPage || 3
+    const postsPerPage = req.query.postsPerPage || 5
 
     try {
         const postsListQuery = Post.find({})

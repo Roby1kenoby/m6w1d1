@@ -2,6 +2,7 @@ import express, { json } from 'express'
 
 // importo lo schema per l'autore
 import Author from '../models/authorSchema.js'
+import Post from '../models/postSchema.js'
 
 const router = express.Router()
 
@@ -141,6 +142,24 @@ router.delete('/:id', async (req,res) => {
         // per farmi restituire l'utente appena eliminato, devo usare le opzioni e chiedere new:true
         const deletedAuthor = await Author.findByIdAndDelete(id, {new: true})
         res.status(202).send(deletedAuthor)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+})
+
+router.get('/:id/blogPosts', async (req,res) => {
+    const id = req.params.id
+    try {
+        const authorExists = await Author.exists({_id:id})
+        // se non esiste
+        if(!authorExists){
+            return res.status(404).send(`L'id ${id} non esiste nel DB`)
+        }
+        
+        const authorPostsList = Post.find({authorId:id})
+        console.log(authorPostsList)
+        res.status(202).send(authorPostsList)
     } catch (error) {
         console.log(error)
         res.status(400).send(error)

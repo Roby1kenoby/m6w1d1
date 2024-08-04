@@ -31,3 +31,6 @@ Content-Type: application/json
 
 ###
 DELETE {{baseUrl}}/66acce5782a7234923d8bd85
+
+###
+GET {{baseUrl}}/66acc62e229d23f0a20f8a47/blogPosts

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BlogAuthor from "../blog-author/BlogAuthor";
 import "./styles.css";
 const BlogItem = (props) => {
-  const { title, cover, author, _id } = props;
+  const { title, cover, authorId, _id } = props;
+  const [author, setAuthor] = useState({})
+  const getAuthor = async () => {
+    const req = await fetch(`http://localhost:3001/authors/${authorId}`)
+    const data = await req.json()
+    setAuthor(data)
+  }
+
+  useEffect(() => {getAuthor()},[])
+
+
+
   return (
     <Link to={`/blog/${_id}`} className="blog-link">
       <Card className="blog-card">
