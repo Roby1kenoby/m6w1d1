@@ -10,9 +10,9 @@ POST {{baseUrl}}
 Content-Type: application/json
 
 {
-    "name": "gente10",
-    "surname": "acaso10",
-    "email": "mail10@gmail.com",
+    "name": "gente11",
+    "surname": "acaso11",
+    "email": "mail11@gmail.com",
     "birthDate": "2024-01-01",
     "avatar": "none"
 }

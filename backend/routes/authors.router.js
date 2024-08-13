@@ -130,7 +130,7 @@ router.put('/:id', async (req,res) => {
     }
 })
 
-
+// delete specifico author
 router.delete('/:id', async (req,res) => {
     const id = req.params.id
     try {
@@ -148,22 +148,39 @@ router.delete('/:id', async (req,res) => {
     }
 })
 
+// get dei post di uno specifico author
 router.get('/:id/blogPosts', async (req,res) => {
-    const id = req.params.id
+    const {id} = req.params
     try {
         const authorExists = await Author.exists({_id:id})
         // se non esiste
         if(!authorExists){
             return res.status(404).send(`L'id ${id} non esiste nel DB`)
         }
+        // pagination
+        const totalPosts = await Post.countDocuments();
+        const actualPage = req.query.page || 1;
+        const postsPerPage = req.query.perPage || 2;
+        const totalPages = Math.ceil(totalPosts / postsPerPage);
         
-        const authorPostsList = Post.find({authorId:id})
-        console.log(authorPostsList)
-        res.status(202).send(authorPostsList)
+        // query with pagination
+        const authorPostsList = await Post.find({authorId:id})
+            .skip((actualPage - 1) * postsPerPage)
+            .limit(postsPerPage)
+
+        const data = {
+            data: authorPostsList,
+            totalPosts,
+            postsPerPage,
+            actualPage
+        }
+
+        res.status(202).send(data)
     } catch (error) {
         console.log(error)
         res.status(400).send(error)
     }
 })
+
 
 export default router
