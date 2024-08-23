@@ -5,6 +5,9 @@ import postsRouter from './routes/posts.router.js'
 import 'dotenv/config'
 // import per il DB
 import mongoDbConnection from './db.js'
+// import librerie per le chiamate api
+import morgan from 'morgan'
+import helmet from 'helmet'
 import cors from 'cors'
 
 //creo il server
@@ -19,7 +22,9 @@ server.use(express.json())
 // utilizzo il middleware cors per specificare a chi rispondere
 // così risponde a chiunque.
 server.use(cors())
-
+server.use(morgan('dev'))
+server.use(helmet())
+server.use(cors())
 // collegamento al mongoDB, se non uso un file esterno
 // mongoose.connect(connectionString).then(() => {
 //     console.log('connessione al db ok')
