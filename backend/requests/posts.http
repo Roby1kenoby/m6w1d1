@@ -11,18 +11,18 @@ Content-Type: application/json
 
 {
     "category": "Sport",
-    "title": "Articolo 11 creato sempre da tizio",
+    "title": "Articolo 12 creato da un altro tizio",
     "cover": "urlCover" ,
     "readTime": {
         "value": 10,
         "unit": "min"
     },
     "authorId": "66ad2727c5b6282c3722d3a3",
-    "content": "Articolo 11 molto lungo ciao."
+    "content": "Articolo 12 molto lungo ciao."
 }
 
 ###
-PUT {{baseUrl}}/66af5567bf036eedfb8c1e25
+PUT {{baseUrl}}/66af552abf036eedfb8c1e1b
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Content-Type: application/json
         "unit": "min"
     },
     "authorId": "66acc62e229d23f0a20f8a47",
-    "content": "Testo modificato."
+    "content": "Testo modificato 2."
 }
 
 ###
