@@ -1,0 +1,30 @@
+@baseUrl=http://localhost:3001/blogPosts/66af552abf036eedfb8c1e1b/comments
+
+### tutti i commenti del post
+GET {{baseUrl}}
+
+### specifico commento
+GET {{baseUrl}}/66ccce259091a1cea4b73a72
+
+### creare un commento
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "authorId": "66acc62e229d23f0a20f8a47",
+    "comment": "Commento 5 inserito sul post x y z",
+    "postId": "66af552abf036eedfb8c1e1b"
+}
+
+### modificare un commento
+PUT {{baseUrl}}/66ccce259091a1cea4b73a72
+Content-Type: application/json
+
+{
+    "authorId": "66acc62e229d23f0a20f8a47",
+    "comment": "Commento 333 inserito sul post x y z",
+    "postId": "66af552abf036eedfb8c1e1b"
+}
+
+### delete specifico commento
+DELETE {{baseUrl}}/66ccd21af742f4d31efcbc91

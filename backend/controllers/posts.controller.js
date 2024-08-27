@@ -1,6 +1,8 @@
-// importo gli schema per l'autore e per i post
+// importo gli schema per l'autore, per i post e per i commenti
 import Post from '../models/postSchema.js'
 import Authors from '../models/authorSchema.js'
+import Comments from '../models/commentSchema.js'
+
 // import servizio mailer
 import transport from '../services/mailer.service.js'
 
@@ -8,19 +10,19 @@ export const getAllPosts = async (req,res) => {
 
     // parametri per la paginazione
     const page = req.query.page || 1
-    const postsPerPage = req.query.postsPerPage || 5
+    const commentsPerPage = req.query.commentsPerPage || 5
 
     try {
         const postsListQuery = Post.find({})
         
         postsListQuery.sort({surname:1, name:1})
-        postsListQuery.skip((page-1)*postsPerPage)
-        postsListQuery.limit(postsPerPage)
+        postsListQuery.skip((page-1)*commentsPerPage)
+        postsListQuery.limit(commentsPerPage)
 
         const postsList = await postsListQuery
 
         const postsNumber = await Post.countDocuments()
-        const pages = Math.ceil(postsNumber / postsPerPage)
+        const pages = Math.ceil(postsNumber / commentsPerPage)
 
         const data = {
             postsList,
@@ -110,6 +112,7 @@ export const deleteSpecificPost = async (req,res) => {
         }
         // per farmi restituire l'utente appena eliminato, devo usare le opzioni e chiedere new:true
         const deletedPost = await Post.findByIdAndDelete(id, {new: true})
+        // importante, è necessario sempre fare anche un save, se no l'elemento non viene davvero rimosso
         res.status(202).send(deletedPost)
     } catch (error) {
         console.log(error)
@@ -155,4 +158,103 @@ export const patchSpecificPostCover = async (req,res) => {
         res.status(400).send(error)
     }
 
+}
+
+// gestione dei commenti
+
+export const createPostComment = async (req,res) => {
+    const data = req.body
+
+    try {
+        const newComment = new Comments(data)
+        const createdComment = await newComment.save()
+        res.status(201).send(createdComment)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
+
+export const getAllPostComments = async (req,res) => {
+    const id = req.params.id
+
+    // parametri per la paginazione
+    const page = req.query.page || 1
+    const commentsPerPage = req.query.commentsPerPage || 5
+
+    try {
+        const commentsListQuery = Comments.find({postId: id})
+        
+        commentsListQuery.skip((page-1)*commentsPerPage)
+        commentsListQuery.limit(commentsPerPage)
+
+        const commentsList = await commentsListQuery
+
+        const commentsNumber = commentsList.length
+        const pages = Math.ceil(commentsNumber / commentsPerPage)
+
+        const data = {
+            commentsList,
+            commentsNumber,
+            pages
+        } 
+
+        res.send(data)
+    } 
+    catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
+
+export const getSpecificPostComment = async (req,res) => {
+    const commentId = req.params.commentId
+    try {
+        const foundComment = await Comments.findById(commentId)
+        console.log(foundComment)
+        res.status(200).send(foundComment)
+    } catch (error) {
+        console.log('Post not found')
+        res.status(404).send('Post not found')
+    }
+}
+
+export const editSpecificPostComment = async (req, res) => {
+    const commentId = req.params.commentId
+    const data = req.body
+
+    try {
+        // verifico se il commento esiste già tramite l'id
+        const commentExists = await Comments.exists({_id:commentId})
+        // se non esiste
+        if(!commentExists){
+            return res.status(404).send(`L'id ${id} non esiste nel DB`)
+        }
+        // altrimenti cerco di modificare
+        const updatedComment = await Comments.findByIdAndUpdate(commentId, data, { new: true })
+        await updatedComment.save()
+        res.status(202).send(updatedComment)
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
+
+export const deleteSpecificPostComment = async (req, res) => {
+    const commentId = req.params.commentId
+
+    try {
+        const commentExists = await Comments.exists({_id: commentId})
+        if (!commentExists) {
+            return res.status(404).send(`L'id ${commentId} non esiste nel DB`)
+        }
+
+        const deletedComment = await Comments.findByIdAndDelete(commentId, {new: true})
+        res.status(202).send(deletedComment)
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
 }

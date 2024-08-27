@@ -23,7 +23,7 @@ server.use(express.json())
 // così risponde a chiunque.
 server.use(cors())
 server.use(morgan('dev'))
-server.use(helmet())
+// server.use(helmet())
 server.use(cors())
 // collegamento al mongoDB, se non uso un file esterno
 // mongoose.connect(connectionString).then(() => {
