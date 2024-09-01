@@ -1,0 +1,15 @@
+@baseUrl=http://localhost:3001/auth
+
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "mail14@gmail.com",
+    "password": "password123"
+}
+
+###
+GET {{baseUrl}}/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjUyMDc2NTEsImV4cCI6MTcyNTIxMTI1MX0.HHCBRV0R3Jo7M5YebQD9m7_brt17qCHvzolW8lBEdOE
+Content-Type: application/json
+

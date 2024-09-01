@@ -7,6 +7,8 @@ import { createSpecificAuthor, deleteSpecificAuthor, editSpecificAuthor,
 
 // importo il middleware per l'upload dei file
 import uploadCloudinary from '../middlewares/uploadCloudinary.js'
+// import middleware che gestisce l'auth
+import authentication from '../middlewares/authentication.js'
 
 const router = express.Router()
 
@@ -19,6 +21,9 @@ router.get('/:id', getSpecificAuthor)
 
 // create specifico author
 router.post('/', createSpecificAuthor)
+
+// da qui in avanti, rotte che hanno bisogno dell'utente autenticato
+router.use(authentication)
 
 // edit specifico author
 router.put('/:id', editSpecificAuthor)

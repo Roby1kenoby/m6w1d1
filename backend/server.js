@@ -1,6 +1,7 @@
 import express from 'express'
 import authorsRouter from './routes/authors.router.js'
 import postsRouter from './routes/posts.router.js'
+import authRouter from './routes/authentication.router.js'
 // import environment
 import 'dotenv/config'
 // import per il DB
@@ -42,6 +43,7 @@ mongoDbConnection()
 // definite nel file route apposito
 server.use('/authors', authorsRouter)
 server.use('/blogPosts', postsRouter)
+server.use('/auth', authRouter)
 
 server.listen(port, () => {
     console.log(`Server attivo sulla porta ${port}`)

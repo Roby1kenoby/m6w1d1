@@ -8,7 +8,8 @@ import { createPost, deleteSpecificPost, editSpecificPost, getSpecificPost,
         editSpecificPostComment, deleteSpecificPostComment } from '../controllers/posts.controller.js'
 // importo cloudinary per l'upload delle immagini
 import uploadCloudinary from '../middlewares/uploadCloudinary.js'
-
+// import mw per gestire l'autenticazione
+import authentication from '../middlewares/authentication.js'
 const router = express.Router()
 
 
@@ -17,6 +18,9 @@ router.get('/', getAllPosts)
 
 // get specifico post
 router.get('/:id', getSpecificPost)
+
+// da qui in avanti, le rotte hanno bisogno di avere un utente autenticato
+router.use(authentication)
 
 // create post
 router.post('/', createPost)

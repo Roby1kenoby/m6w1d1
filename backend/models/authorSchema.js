@@ -15,16 +15,23 @@ const authorSchema = new Schema(
             required: true,
             unique: true
         },
+        password:{
+            type: String,
+            require: true
+        },
         birthDate: {
             type: Date
         },
         avatar: {
             type: String
-        }
+        },
+        createdAt: Date,
+        
     }
     ,
     {
-        collection: "authors"
+        collection: "authors",
+        timestamps: true
     }
 )
 

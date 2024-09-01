@@ -3,6 +3,9 @@ import Author from '../models/authorSchema.js'
 import Post from '../models/postSchema.js'
 // import servizio mailer
 import transport from '../services/mailer.service.js'
+// import libreria per crypt password
+import bcrypt from 'bcrypt'
+
 
 export const getAllAuthors = async (req,res) => {
 
@@ -83,7 +86,16 @@ export const createSpecificAuthor = async (req,res) => {
     }
     // se non esiste, tento l'inserimento.
     try {
-        const newAuthor = new Author(data)
+        const newAuthor = new Author({
+            name: data.name,
+            surname: data.surname,
+            email: data.email,
+            //effettuo l'hash della password 10 volte
+            password: await bcrypt.hash(data.password, 10),
+            birthDate: data.birthDate,
+            avatar: data.avatar,
+            createdAt: Date.now()
+        })
         const createdAuthor = await newAuthor.save()
         res.status(201).send(createdAuthor)
     } catch (error) {

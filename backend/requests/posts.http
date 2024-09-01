@@ -24,6 +24,7 @@ Content-Type: application/json
 ###
 PUT {{baseUrl}}/66af552abf036eedfb8c1e1b
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjUyMDc2NTEsImV4cCI6MTcyNTIxMTI1MX0.HHCBRV0R3Jo7M5YebQD9m7_brt17qCHvzolW8lBEdOE
 
 {
     "category": "Sport",

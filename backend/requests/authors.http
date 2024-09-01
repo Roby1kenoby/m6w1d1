@@ -10,9 +10,10 @@ POST {{baseUrl}}
 Content-Type: application/json
 
 {
-    "name": "gente13",
-    "surname": "acaso11",
-    "email": "mail13@gmail.com",
+    "name": "gente14",
+    "surname": "acaso14",
+    "email": "mail14@gmail.com",
+    "password": "password123",
     "birthDate": "2024-01-01",
     "avatar": "none"
 }
@@ -20,6 +21,7 @@ Content-Type: application/json
 ###
 PUT {{baseUrl}}/66c86bf5bd9de5028233e069
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjUyMDc2NTEsImV4cCI6MTcyNTIxMTI1MX0.HHCBRV0R3Jo7M5YebQD9m7_brt17qCHvzolW8lBEdOE
 
 {
     "name": "gnappoboh",
@@ -31,6 +33,8 @@ Content-Type: application/json
 
 ###
 DELETE {{baseUrl}}/66c86bf5bd9de5028233e069
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjUyMDc2NTEsImV4cCI6MTcyNTIxMTI1MX0.HHCBRV0R3Jo7M5YebQD9m7_brt17qCHvzolW8lBEdOE
 
 ###
 GET {{baseUrl}}/66acc62e229d23f0a20f8a47/blogPosts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjUyMDc2NTEsImV4cCI6MTcyNTIxMTI1MX0.HHCBRV0R3Jo7M5YebQD9m7_brt17qCHvzolW8lBEdOE
