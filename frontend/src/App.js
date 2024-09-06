@@ -10,6 +10,7 @@ import {LoginContext} from "./components/login/LoginContextProvider";
 
 function App() {
   const {token} = useContext(LoginContext)
+  
   return (
       <Router>
         <NavBar />

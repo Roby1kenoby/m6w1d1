@@ -98,6 +98,17 @@ export const createSpecificAuthor = async (req,res) => {
             createdAt: Date.now()
         })
         const createdAuthor = await newAuthor.save()
+
+        // richiamo servizio per invio mail, per dare conferma avatar cambiato
+        await transport.sendMail({
+            from: 'Roby1kenoby@asd.it',
+            // mail presa direttamente dalla richiesta
+            to: data.email,
+            subject: "Registration Complete!",
+            text: "Congrats, you've registered yourself to StriveBlog!",
+            html: "<b>Congrats!</b> you've registered yourself to StriveBlog!"
+        })
+
         res.status(201).send(createdAuthor)
     } catch (error) {
         console.log(error)

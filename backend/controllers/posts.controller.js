@@ -13,7 +13,8 @@ export const getAllPosts = async (req,res) => {
     const commentsPerPage = req.query.commentsPerPage || 5
 
     try {
-        const postsListQuery = Post.find({})
+        // mettere dentro find req.query.title ? 
+        const postsListQuery = Post.find(req.query.title? {title: {$regex: req.query.title ,$options: "i"}}: {})
         
         postsListQuery.sort({surname:1, name:1})
         postsListQuery.skip((page-1)*commentsPerPage)
@@ -67,6 +68,17 @@ export const createPost = async (req,res) => {
     try {
         const newPost = new Post(data)
         const createdPost = await newPost.save()
+
+        // richiamo servizio per invio mail, per dare conferma avatar cambiato
+        await transport.sendMail({
+            from: 'Roby1kenoby@asd.it',
+            // mail presa direttamente dalla richiesta
+            to: data.email,
+            subject: "Post Created!",
+            text: "Congrats, you've created a new post!",
+            html: "<b>Congrats!</b> you've created a new post!"
+        })
+
         res.status(201).send(createdPost)
     } catch (error) {
         console.log(error)

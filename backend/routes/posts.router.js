@@ -36,6 +36,8 @@ router.delete('/:id', deleteSpecificPost)
 router.patch('/:id/cover', uploadCloudinary.single('cover'), patchSpecificPostCover)
 
 
+
+
 // rotte per la gestione dei commenti ai post
 // tutti i commenti del post
 router.get('/:id/comments', getAllPostComments)

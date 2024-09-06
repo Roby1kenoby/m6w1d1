@@ -11,7 +11,6 @@ const Home = props => {
   return (
     <Container fluid="sm">
       <h1 className="blog-main-title mb-3">Benvenuto sullo Strive Blog!</h1>
-      {/* Nascondere bloglist e mostrare pulsanti login\registrazione se non auth */}
       {token && <BlogList />}
       {!token && <Login />}
     </Container>
