@@ -1,9 +1,11 @@
 @baseUrl=http://localhost:3001/authors
 
 GET {{baseUrl}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjU2NDIwMzEsImV4cCI6MTcyNTY0NTYzMX0.ve09lot6oFhnSCsSBitRoPt-VJNUwQQTtwHVKzvoaXA
 
 ###
 GET {{baseUrl}}/66acc62e229d23f0a20f8a47
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjU2NTQ4ODUsImV4cCI6MTcyNTY1ODQ4NX0.83lmrPMMSuz-DZfZDNLlRNAq_KfEYmcAvIi3PDV1ooQ
 
 ###
 POST {{baseUrl}}

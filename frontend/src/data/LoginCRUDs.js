@@ -30,7 +30,6 @@ export const Me = async(token) => {
         })
 
         const data = await resp.json()
-        console.log('data from crud' + data)
         return data;
     } catch (error) {
         console.log(error)

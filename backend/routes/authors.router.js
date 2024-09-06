@@ -13,17 +13,19 @@ import authentication from '../middlewares/authentication.js'
 const router = express.Router()
 
 
-// tutti gli authors
-router.get('/', getAllAuthors)
 
-// get specifico author
-router.get('/:id', getSpecificAuthor)
 
 // create specifico author
 router.post('/', uploadCloudinary.single('avatar'), createSpecificAuthor)
 
 // da qui in avanti, rotte che hanno bisogno dell'utente autenticato
 router.use(authentication)
+
+// get specifico author
+router.get('/:id', getSpecificAuthor)
+
+// tutti gli authors
+router.get('/', getAllAuthors)
 
 // edit specifico author
 router.put('/:id', editSpecificAuthor)

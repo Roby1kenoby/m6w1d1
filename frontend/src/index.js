@@ -4,11 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { LoginContextProvider } from "./components/login/LoginContextProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <LoginContextProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </LoginContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

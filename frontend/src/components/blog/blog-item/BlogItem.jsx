@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BlogAuthor from "../blog-author/BlogAuthor";
+import { LoginContext } from "../../login/LoginContextProvider";
 import "./styles.css";
 const BlogItem = (props) => {
   const { title, cover, authorId, _id } = props;
   const [author, setAuthor] = useState({})
+  const {token} = useContext(LoginContext)
+
   const getAuthor = async () => {
-    const req = await fetch(`http://localhost:3001/authors/${authorId}`)
+    const req = await fetch(`http://localhost:3001/authors/${authorId}`,{
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
     const data = await req.json()
     setAuthor(data)
   }

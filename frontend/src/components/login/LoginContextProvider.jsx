@@ -18,6 +18,7 @@ export function LoginContextProvider({ children }) {
         // e li metto nello stato
         setLoggedUser(authorData)
         // e inserisco nel local storage il token
+        // gestire l'errore in caso di author non trovato
         localStorage.setItem("token", token)
     }
 

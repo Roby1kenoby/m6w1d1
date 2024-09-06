@@ -1,9 +1,11 @@
 @baseUrl=http://localhost:3001/blogPosts
 
 GET {{baseUrl}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjU2NDIwMzEsImV4cCI6MTcyNTY0NTYzMX0.ve09lot6oFhnSCsSBitRoPt-VJNUwQQTtwHVKzvoaXA
 
 ###
 GET {{baseUrl}}/66af552abf036eedfb8c1e1b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjU2NDIwMzEsImV4cCI6MTcyNTY0NTYzMX0.ve09lot6oFhnSCsSBitRoPt-VJNUwQQTtwHVKzvoaXA
 
 ###
 POST {{baseUrl}}

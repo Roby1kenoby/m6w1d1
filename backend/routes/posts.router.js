@@ -13,14 +13,14 @@ import authentication from '../middlewares/authentication.js'
 const router = express.Router()
 
 
+// da qui in avanti, le rotte hanno bisogno di avere un utente autenticato
+router.use(authentication)
+
 // tutti i posts
 router.get('/', getAllPosts)
 
 // get specifico post
 router.get('/:id', getSpecificPost)
-
-// da qui in avanti, le rotte hanno bisogno di avere un utente autenticato
-router.use(authentication)
 
 // create post
 router.post('/', createPost)
