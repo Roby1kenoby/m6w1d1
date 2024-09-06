@@ -1,0 +1,14 @@
+#loginFormContainerWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#innerWrapper{
+    width: 50%;
+}
+
+.loginButtonGroup{
+    display: flex;
+    justify-content: space-between;
+}

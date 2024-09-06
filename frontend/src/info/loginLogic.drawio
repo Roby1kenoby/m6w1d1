@@ -1,0 +1,55 @@
+<mxfile host="65bd71144e">
+    <diagram id="y9RrRKRB4R_ii8w5xQdY" name="Page-1">
+        <mxGraphModel dx="452" dy="499" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" style="edgeStyle=none;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.4;entryY=-0.022;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" style="edgeStyle=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Home" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="305" y="60" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Login" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="185" y="160" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="BlogList" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+                    <mxGeometry x="365" y="165" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Utente Non Loggato" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="180" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Login" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+                    <mxGeometry x="185" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="BlogList" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=auto;" parent="1" vertex="1">
+                    <mxGeometry x="365" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Utente Loggato" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="280" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="17">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Login" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Login Form" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="500" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Register Form" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="500" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Gestione Tramite Stato Sul Padre&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="400" width="110" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

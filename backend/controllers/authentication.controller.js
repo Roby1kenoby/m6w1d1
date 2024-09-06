@@ -20,30 +20,26 @@ export const loginUser = async (req,res) => {
     
     // se siamo arrivati fin qui, rilascio il token jwt
     jwt.sign(
-    // payload (utile per recuperare l'id dell'utente)
-    {
-        userId: author.id
-    },
-    // secret per firmare il token 
-    process.env.JWT_SECRET,
-    // opzioni (durata del token)
-    {
-        expiresIn: '1h'
-    },
-    // callback (non posso usare async await)
-    (err, jwtToken) => {
-        if(err) return res.status(500).send('Server error')
-        res.send({
-            token: jwtToken
-        })
-    }
-)
-
-    
-
-    
+        // payload (utile per recuperare l'id dell'utente)
+        {
+            userId: author.id
+        },
+        // secret per firmare il token 
+        process.env.JWT_SECRET,
+        // opzioni (durata del token)
+        {
+            expiresIn: '1h'
+        },
+        // callback (non posso usare async await)
+        (err, jwtToken) => {
+            if(err) return res.status(500).send('Server error')
+            res.send({
+                jwtToken
+            })
+        }
+    )
 }   
-
+// la /me dovrebbe scompattare il jwt e restituire i dati all'interno, o quelli trovati nel db
 export const getUserData = (req,res) => {
     return res.send(req.loggedUser);
 }

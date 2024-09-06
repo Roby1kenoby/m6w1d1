@@ -20,7 +20,7 @@ router.get('/', getAllAuthors)
 router.get('/:id', getSpecificAuthor)
 
 // create specifico author
-router.post('/', createSpecificAuthor)
+router.post('/', uploadCloudinary.single('avatar'), createSpecificAuthor)
 
 // da qui in avanti, rotte che hanno bisogno dell'utente autenticato
 router.use(authentication)

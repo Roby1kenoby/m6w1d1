@@ -73,6 +73,7 @@ export const getSpecificAuthor = async (req, res) => {
 export const createSpecificAuthor = async (req,res) => {
     // nel body ci sarà l'oggetto da creare
     const data = req.body
+    const filePath = req.file.path
 
     // uso la exists per cercare se esiste già qualcosa nel db con quella mail.
     // se esiste, eviterò di fare la insert, così gestisco l'errore a monte, e non a valle dell'inserimento, che è più complicato.
@@ -93,7 +94,7 @@ export const createSpecificAuthor = async (req,res) => {
             //effettuo l'hash della password 10 volte
             password: await bcrypt.hash(data.password, 10),
             birthDate: data.birthDate,
-            avatar: data.avatar,
+            avatar: filePath,
             createdAt: Date.now()
         })
         const createdAuthor = await newAuthor.save()

@@ -19,5 +19,7 @@ const cdStorage = new CloudinaryStorage({
 const uploadCloudinary = multer({
     storage: cdStorage
 })
-
+// potrò poi richiamare il middleware ed i suoi metodi (tipo .single('nomeParametroDelFile')) per 
+// far si che venga pescato il file e spedito in cloud
+// dopo di che, alla req, verrà aggiunto una proprietà con l'url 
 export default uploadCloudinary

@@ -10,6 +10,6 @@ Content-Type: application/json
 
 ###
 GET {{baseUrl}}/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjUyMDc2NTEsImV4cCI6MTcyNTIxMTI1MX0.HHCBRV0R3Jo7M5YebQD9m7_brt17qCHvzolW8lBEdOE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmQ0Njg2ZGFlMDNkZTRjZjYyMjFkZmEiLCJpYXQiOjE3MjU1NTM0OTQsImV4cCI6MTcyNTU1NzA5NH0.qAdc7KIpcgD4zvNozmcS01r82gqQsV-vXfCJMt3ZoUE
 Content-Type: application/json
 
