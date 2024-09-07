@@ -3,27 +3,15 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BlogAuthor from "../blog-author/BlogAuthor";
 import { LoginContext } from "../../login/LoginContextProvider";
+import { getAuthor } from "../../../data/AuthorCRUDs";
+
 import "./styles.css";
 const BlogItem = (props) => {
   const { title, cover, authorId, _id } = props;
   const [author, setAuthor] = useState({})
   const {token} = useContext(LoginContext)
-
-  const getAuthor = async () => {
-    const req = await fetch(`http://localhost:3001/authors/${authorId}`,{
-      headers: {
-        Authorization: 'Bearer ' + token
-      }
-    })
-    const data = await req.json()
-    setAuthor(data)
-  }
-
-  useEffect(() => {getAuthor()},[])
-
-
-
-  return (
+  
+return (
     <Link to={`/blog/${_id}`} className="blog-link">
       <Card className="blog-card">
         <Card.Img variant="top" src={cover} className="blog-cover" />
@@ -31,7 +19,7 @@ const BlogItem = (props) => {
           <Card.Title>{title}</Card.Title>
         </Card.Body>
         <Card.Footer>
-          <BlogAuthor {...author} />
+          <BlogAuthor authorId= {authorId} />
         </Card.Footer>
       </Card>
     </Link>

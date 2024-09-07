@@ -1,7 +1,7 @@
-// file che contiene tutte le operazioni CRUD usate dall'app per le questioni di login
-const URI = 'http://localhost:3001/authors'
+// file che contiene tutte le operazioni CRUD usate dall'app per le questioni dell'autore
+const URI = 'http://localhost:3001/authors/'
 
-// se devo passare dei file, devo avercelo come argomento
+// se devo passare dei file, devo avere file come argomento
 export const NewAuthor = async (authorData, file) => {
     try {
         // formData è un tipo di dati che permette il passaggio di file
@@ -31,6 +31,21 @@ export const NewAuthor = async (authorData, file) => {
         if(!resp.ok) throw new Error(resp)
         
         return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// funzione per recuperare i dati di un autore
+export const getAuthor = async (id, token) => {
+    try {
+        const req = await fetch(URI+id,{
+            headers: {
+            Authorization: 'Bearer ' + token
+        }
+        })
+        const data = await req.json()
+        return data    
     } catch (error) {
         console.log(error)
     }

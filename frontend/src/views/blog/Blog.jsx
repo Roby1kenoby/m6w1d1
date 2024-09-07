@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Image } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogAuthor from "../../components/blog/blog-author/BlogAuthor";
 import BlogLike from "../../components/likes/BlogLike";
-import posts from "../../data/posts.json";
 import "./styles.css";
+import { getPostData } from "../../data/PostCRUDs";
+import { LoginContext } from "../../components/login/LoginContextProvider";
+
+
 const Blog = props => {
   const [blog, setBlog] = useState({});
   const [loading, setLoading] = useState(true);
   const params = useParams();
   const navigate = useNavigate();
-  useEffect(() => {
+  const {token} = useContext(LoginContext)
+  
+  // funzione per recuperare i dati del post 
+  const fetchPostData = async function (){
     const { id } = params;
-    const blog = posts.find(post => post._id.toString() === id);
-
-    if (blog) {
-      setBlog(blog);
-      setLoading(false);
-    } else {
-      navigate("/404");
+    const postData = await getPostData(id,token)
+    if(postData) {
+      setBlog(postData)
+      setLoading(false)
     }
-  }, []);
+    else{
+      navigate('/404')
+    }
+  }
+
+  useEffect(() => {fetchPostData()}, [])
+
 
   if (loading) {
     return <div>loading</div>;
@@ -33,7 +42,7 @@ const Blog = props => {
 
           <div className="blog-details-container">
             <div className="blog-details-author">
-              <BlogAuthor {...blog.author} />
+              <BlogAuthor authorId={blog.authorId} />
             </div>
             <div className="blog-details-info">
               <div>{blog.createdAt}</div>
