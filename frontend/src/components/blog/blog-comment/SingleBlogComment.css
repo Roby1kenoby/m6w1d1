@@ -1,0 +1,25 @@
+.commentWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentWrapper div * {
+    /* border: 1px solid black; */
+}
+
+.commentBox{
+    flex-grow: 2;
+}
+
+.commentDate{
+    color: grey;
+    font-size: small;
+    margin:0
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+
+}

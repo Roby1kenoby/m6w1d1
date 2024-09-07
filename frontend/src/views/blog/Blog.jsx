@@ -1,23 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Image } from "react-bootstrap";
+import { Container, Image, Row, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogAuthor from "../../components/blog/blog-author/BlogAuthor";
 import BlogLike from "../../components/likes/BlogLike";
 import "./styles.css";
 import { getPostData } from "../../data/PostCRUDs";
 import { LoginContext } from "../../components/login/LoginContextProvider";
+import SingleBlogComment from "../../components/blog/blog-comment/SingleBlogComment";
+import { getPostComments } from "../../data/CommentCRUDs";
 
 
 const Blog = props => {
   const [blog, setBlog] = useState({});
   const [loading, setLoading] = useState(true);
+  // stato per i commenti
+  const [comments, setComments] = useState([])
+  // per recuperare l'id dal queryString
   const params = useParams();
-  const navigate = useNavigate();
+  const { id } = params;
   const {token} = useContext(LoginContext)
   
-  // funzione per recuperare i dati del post 
+  const navigate = useNavigate();
+  
+  // funzione per recuperare i dati del post dall'id
   const fetchPostData = async function (){
-    const { id } = params;
+    
     const postData = await getPostData(id,token)
     if(postData) {
       setBlog(postData)
@@ -27,9 +34,16 @@ const Blog = props => {
       navigate('/404')
     }
   }
-
+  // funzione per recuperare i commenti del post
+  const fetchPostComments = async function(){
+    const commentsList = await getPostComments(id, token)
+    if(commentsList){
+      setComments(commentsList)
+      console.log(commentsList)
+    }
+  }
   useEffect(() => {fetchPostData()}, [])
-
+  useEffect(() => {fetchPostComments()}, [])
 
   if (loading) {
     return <div>loading</div>;
@@ -62,6 +76,22 @@ const Blog = props => {
               __html: blog.content,
             }}
           ></div>
+        </Container>
+        <Container>
+          <hr></hr>
+          <Row>
+            <div id="addCommentsWrapper">
+              <h6>Commenti</h6>
+              <Button variant="dark">
+                Add Comments
+              </Button>
+            </div>
+          </Row>
+            {comments.map((comment) => (
+              <Row key={comment._id} className="commentRow">
+                <SingleBlogComment comm={comment}></SingleBlogComment>
+              </Row>
+            ))}
         </Container>
       </div>
     );

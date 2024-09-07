@@ -48,5 +48,6 @@ export const getAuthor = async (id, token) => {
         return data    
     } catch (error) {
         console.log(error)
+        localStorage.clear()
     }
 }

@@ -40,3 +40,20 @@
 .rdw-editor-main {
   border: 1px solid grey
 }
+
+#addCommentsWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commentRow{
+  border: 0.5px solid grey;
+  padding: 0.5em;
+  margin: 1em 0;
+  -webkit-box-shadow: 5px 5px 10px 0px #AEAEAE;
+  -moz-box-shadow: 5px 5px 10px 0px #AEAEAE;
+  -o-box-shadow: 5px 5px 10px 0px #AEAEAE;
+  box-shadow: 5px 5px 10px 0px #AEAEAE;
+  min-width: min-content;
+}

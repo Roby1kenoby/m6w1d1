@@ -28,7 +28,7 @@ const BlogAuthor = (authorId) => {
       </Col>
       <Col>
         <div>di</div>
-        <h6>{name}</h6>
+        <h6 id="authorName">{name}</h6>
       </Col>
     </Row>
   );
