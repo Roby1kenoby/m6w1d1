@@ -132,7 +132,6 @@ const Blog = props => {
     const text = "Sei sicuro/a di voler eliminare il post?";
     if (window.confirm(text) == true) {
       const resp = await deletePost(id, token)
-      console.log(resp)
       navigate('/')
     } else {
       return

@@ -35,7 +35,6 @@ export const savePostComment = async function(id, postData, token){
 
         const data = await resp.json()
         if(!data) throw Error('Errore nel salvataggio del commento')
-        console.log(data)
         return data
 
     } catch (error) {
@@ -56,7 +55,6 @@ export const editPostComment = async function(id, postData, token){
 
         const data = await resp.json()
         if(!data) throw Error('Errore nella modifica del commento')
-        console.log(data)
         return data
 
     } catch (error) {
