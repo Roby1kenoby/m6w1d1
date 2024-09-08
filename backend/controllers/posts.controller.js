@@ -10,7 +10,7 @@ export const getAllPosts = async (req,res) => {
 
     // parametri per la paginazione
     const page = req.query.page || 1
-    const commentsPerPage = req.query.commentsPerPage || 5
+    const commentsPerPage = req.query.commentsPerPage || 999
 
     try {
         // mettere dentro find req.query.title ? 
@@ -53,6 +53,10 @@ export const getSpecificPost = async (req, res) => {
 export const createPost = async (req,res) => {
     // nel body ci sarà l'oggetto da creare
     const data = req.body
+    const filePath = req.file.path ? req.file.path : "https://picsum.photos/400/600"
+
+    console.log(data)
+    console.log(filePath)
 
     // uso la exists per cercare se esiste già qualcosa con lo stesso titolo e content
     // se esiste, eviterò di fare la insert, così gestisco l'errore a monte, e non a valle dell'inserimento, che è più complicato.
@@ -66,14 +70,23 @@ export const createPost = async (req,res) => {
     }
     // se non esiste, tento l'inserimento.
     try {
-        const newPost = new Post(data)
+        const newPost = new Post({
+            category: data.category,
+            title: data.title,
+            cover:filePath,
+            readTime: JSON.parse(data.readTime),
+            authorId: data.authorId,
+            content: data.content
+        })
         const createdPost = await newPost.save()
+        // devo cercarmi l'autore tramite l'id, per recuperare l'email
+        const foundAuthor = await Authors.findById(data.authorId)
+        
 
-        // richiamo servizio per invio mail, per dare conferma avatar cambiato
+        // richiamo servizio per invio mail, per dare conferma post inserito
         await transport.sendMail({
             from: 'Roby1kenoby@asd.it',
-            // mail presa direttamente dalla richiesta
-            to: data.email,
+            to: foundAuthor.email,
             subject: "Post Created!",
             text: "Congrats, you've created a new post!",
             html: "<b>Congrats!</b> you've created a new post!"

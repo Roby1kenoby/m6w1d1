@@ -23,7 +23,7 @@ router.get('/', getAllPosts)
 router.get('/:id', getSpecificPost)
 
 // create post
-router.post('/', createPost)
+router.post('/', uploadCloudinary.single('cover'), createPost)
 
 // edit specifico post
 router.put('/:id', editSpecificPost)

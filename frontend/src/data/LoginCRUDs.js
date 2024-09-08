@@ -13,7 +13,6 @@ export const Login = async (loginData) => {
 
         const data = await resp.json()
         return data
-
     } catch (error) {
         console.log(error)
     }
@@ -28,9 +27,14 @@ export const Me = async(token) => {
             },
             method: 'GET'
         })
-
+        // se non mi viene trovato l'autore, vuol dire che il token non è valido.
+        // allora lancio un errore
+        if(!resp.ok) throw Error('Token non valido')
+        
+        // altrimenti restituisco l'utente individuato
         const data = await resp.json()
         return data;
+
     } catch (error) {
         console.log(error)
     }

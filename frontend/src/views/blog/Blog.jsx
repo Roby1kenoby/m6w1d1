@@ -24,7 +24,7 @@ const Blog = props => {
   
   // funzione per recuperare i dati del post dall'id
   const fetchPostData = async function (){
-    
+    console.log(id)
     const postData = await getPostData(id,token)
     if(postData) {
       setBlog(postData)
@@ -42,8 +42,12 @@ const Blog = props => {
       console.log(commentsList)
     }
   }
+
   useEffect(() => {fetchPostData()}, [])
   useEffect(() => {fetchPostComments()}, [])
+
+  // quando salvo un nuovo post o commento, recuperare l'id dell'utente dal token, e non dal frontend
+  // usare la libreria npm jwt decode https://www.npmjs.com/package/jwt-decode
 
   if (loading) {
     return <div>loading</div>;

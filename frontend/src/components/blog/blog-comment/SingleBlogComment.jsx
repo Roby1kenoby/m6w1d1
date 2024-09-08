@@ -4,7 +4,6 @@ import './SingleBlogComment.css'
 
 function SingleBlogComment({comm}) {
     const commentDate = new Date(comm.createdAt)
-
     return ( 
         <div className="commentWrapper">
             <div className="commentBox">
