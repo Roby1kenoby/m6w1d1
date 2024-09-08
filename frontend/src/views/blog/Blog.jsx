@@ -11,11 +11,15 @@ import { LoginContext } from "../../components/login/LoginContextProvider";
 import SingleBlogComment from "../../components/blog/blog-comment/SingleBlogComment";
 import { getPostComments } from "../../data/CommentCRUDs";
 import { jwtDecode } from "jwt-decode";
+import AddComment from "../../components/blog/blog-comment/AddComment";
 
 const Blog = props => {
   const [blog, setBlog] = useState({});
   const [loading, setLoading] = useState(true);
   const [editMode, setEditMode] = useState(false);
+  const [addCommentMode, setAddCommentMode] = useState(false)
+  const [reloadComments, setReloadComments] = useState(false)
+
   // stato per i commenti
   const [comments, setComments] = useState([])
   // per recuperare l'id dal queryString
@@ -49,7 +53,7 @@ const Blog = props => {
   }
 
   useEffect(() => {fetchPostData()}, [])
-  useEffect(() => {fetchPostComments()}, [])
+  useEffect(() => {fetchPostComments()}, [reloadComments])
 
 
   // GESTIONE EDIT DEL POST
@@ -88,6 +92,9 @@ const Blog = props => {
     setCover(event.target.files[0])
   }
 
+  /**
+   *    GESTIONE MODALE EDIT POST
+   */
   // funzione di show del modale
   const showModal = function(){
     // recupero i dati dal blog e compilo il modale
@@ -130,6 +137,13 @@ const Blog = props => {
     } else {
       return
     }
+  }
+  
+  /**
+   *    GESTIONE MODALE NEW COMMENT
+  */
+  const addNewComment = function () {
+    setAddCommentMode(true)
   }
   
 
@@ -185,14 +199,16 @@ const Blog = props => {
             <Row>
               <div id="addCommentsWrapper">
                 <h6>Commenti</h6>
-                <Button variant="dark">
-                  Add Comments
+                <Button variant="dark"
+                  onClick={addNewComment}>
+                  Add Comment
                 </Button>
               </div>
             </Row>
               {comments.map((comment) => (
                 <Row key={comment._id} className="commentRow">
-                  <SingleBlogComment comm={comment}></SingleBlogComment>
+                  <SingleBlogComment comm={comment} reloadComments={reloadComments} 
+                    setReloadComments={setReloadComments}></SingleBlogComment>
                 </Row>
               ))}
           </Container>
@@ -259,6 +275,20 @@ const Blog = props => {
             </Form>
           </Modal.Body>
         </Modal>}
+        
+        {/* Add Comment Modal */}
+        {
+          addCommentMode && 
+          <Modal show={addCommentMode} onHide={() => {setAddCommentMode(false)}}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add Comment</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <AddComment reloadComments={reloadComments} setReloadComments={setReloadComments}
+                          addCommentMode={addCommentMode} setAddCommentMode={setAddCommentMode} />
+            </Modal.Body>
+          </Modal>
+        }
       </>
     );
   }

@@ -216,7 +216,7 @@ export const getAllPostComments = async (req,res) => {
 
     // parametri per la paginazione
     const page = req.query.page || 1
-    const commentsPerPage = req.query.commentsPerPage || 5
+    const commentsPerPage = req.query.commentsPerPage || 999
 
     try {
         const commentsListQuery = Comments.find({postId: id})

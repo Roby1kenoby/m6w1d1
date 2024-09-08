@@ -4,6 +4,7 @@ import posts from "../../../data/posts.json";
 import BlogItem from "../blog-item/BlogItem";
 import { LoginContext } from "../../login/LoginContextProvider";
 import './BlogList.css'
+import { getAllPosts } from "../../../data/PostCRUDs";
 
 // inserire serach bar nella bloglist, e gestire uno stato searchString che cambia 
 // ad ogni digit dell'utente e fa partire la fetch (usando l'hook useEffect)
@@ -18,19 +19,8 @@ const BlogList = props => {
 
   // funzione fetch per recuperare i post dal backend + evenutale ricerca da searchbar
   const getPosts = async (ss) => {
-    const urlBase = 'http://localhost:3001/blogPosts'
-    // se c'è la searchString allora la aggiungo all'url
-    const urlSearch = ss && `?title=${ss}`
-    const requestUrl =  urlBase + urlSearch
-
-    const request = await fetch(requestUrl,{
-      headers:{
-        Authorization: 'Bearer ' + token
-      }
-    })
-
-    const data = await request.json()
-    setPostsList(data.postsList)
+    const fetchPostList = await getAllPosts(ss, token)
+    setPostsList(fetchPostList.postsList)
   }
 
   useEffect(() => {getPosts(searchString)}, [searchString])

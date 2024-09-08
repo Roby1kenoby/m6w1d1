@@ -1,5 +1,26 @@
 const URI = 'http://localhost:3001/blogPosts/'
 
+export const getAllPosts = async function(searchString, token){
+    // se c'è la searchString allora la aggiungo all'url
+    const urlSearch = searchString && `?title=${searchString}`
+    const requestUrl =  URI + urlSearch
+
+    try {
+        const resp = await fetch(requestUrl, {
+            headers:{
+                Authorization: 'Bearer ' + token
+            }
+        })
+
+        if(!resp.ok) throw Error('Problema nel recuperare i post')
+        const data = await resp.json()
+        return(data)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getPostData = async function(id, token){
     try {
         const resp = await fetch(URI+id,{   
