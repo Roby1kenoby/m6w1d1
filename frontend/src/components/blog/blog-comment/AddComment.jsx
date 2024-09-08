@@ -25,8 +25,8 @@ function AddComment({reloadComments, setReloadComments, addCommentMode, setAddCo
     }
 
     // funzione per salvare il commento
-    const fetchAddComment = function() {
-        savePostComment(id,formData,token)
+    const fetchAddComment = async function() {
+        await savePostComment(id,formData,token)
         setReloadComments(!reloadComments)
         setAddCommentMode(!addCommentMode)
     }
