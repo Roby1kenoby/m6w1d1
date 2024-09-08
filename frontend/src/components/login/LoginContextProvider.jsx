@@ -31,7 +31,6 @@ export function LoginContextProvider({ children }) {
             // pulisco la cache in modo che vengano ripresentate le schermate di login
             setToken('')
             localStorage.clear()
-            
         }
     }
 

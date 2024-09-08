@@ -102,6 +102,7 @@ export const createPost = async (req,res) => {
 export const editSpecificPost = async (req,res) => {
     const id = req.params.id
     const data = req.body
+    const filePath = req.file.path ? req.file.path : "https://picsum.photos/400/600"
 
     try {
         // verifico se il post esiste già tramite l'id
@@ -117,7 +118,17 @@ export const editSpecificPost = async (req,res) => {
         }
 
         // altrimenti cerco di modificare
-        const updatedPost = await Post.findByIdAndUpdate(id, data, { new: true })
+        const editedPost = {
+            category: data.category,
+            title: data.title,
+            cover:filePath,
+            readTime: JSON.parse(data.readTime),
+            authorId: data.authorId,
+            content: data.content
+        }
+
+        console.log(editedPost)
+        const updatedPost = await Post.findByIdAndUpdate(id, editedPost, { new: true })
         await updatedPost.save()
         res.status(202).send(updatedPost)
 

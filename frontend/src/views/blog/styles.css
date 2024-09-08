@@ -13,6 +13,7 @@
   width: 100%;
   flex-direction: column;
   margin-top: 100px;
+  position: relative;
 }
 
 .blog-details-title {
@@ -56,4 +57,14 @@
   -o-box-shadow: 5px 5px 10px 0px #AEAEAE;
   box-shadow: 5px 5px 10px 0px #AEAEAE;
   min-width: min-content;
+}
+
+.postButtonContainer{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.postButtonContainer button{
+  margin: 0.5em
 }

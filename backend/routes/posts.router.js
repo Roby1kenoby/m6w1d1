@@ -26,7 +26,7 @@ router.get('/:id', getSpecificPost)
 router.post('/', uploadCloudinary.single('cover'), createPost)
 
 // edit specifico post
-router.put('/:id', editSpecificPost)
+router.put('/:id', uploadCloudinary.single('cover'), editSpecificPost)
 
 // delete specifico post
 router.delete('/:id', deleteSpecificPost)
