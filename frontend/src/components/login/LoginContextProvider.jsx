@@ -4,8 +4,28 @@ export const LoginContext = createContext()
 
 export function LoginContextProvider({ children }) {
     const [loggedUser, setLoggedUser] = useState(null)
-    // al caricamento, controllo nel local storage. Se c'è il token, allora ok. (TODO verificare il token prima di andare avanti)
-    const [token, setToken] = useState(localStorage.getItem('token'))
+    const [token, setToken] = useState(null)
+    
+    const manageToken = function (){
+        // recupero l'eventuale token dall'url (ricevuto da un login oauth)
+        const objUrlParams = new URLSearchParams(window.location.search)
+        const urlToken = objUrlParams.get('token')
+        // verifico se è presente un token nel localstorage
+        const storageToken = localStorage.getItem('token')
+
+        // se c'è il token nell'url, è il più recente e uso quello perchè è di sicuro il più recente
+        if(urlToken){
+            setToken(urlToken)
+            localStorage.setItem('token', urlToken)
+        }
+
+        // se non c'è nell'url, ma c'è nello storage, allora considero quello
+        if(!urlToken && storageToken){
+            setToken(storageToken)
+        }
+    }
+    
+
     const value = {loggedUser, setLoggedUser, token, setToken}
 
     // funzione per recuperare i dati dell'utente dopo aver ricevuto un token
@@ -34,8 +54,13 @@ export function LoginContextProvider({ children }) {
         }
     }
 
+
+
     // useeffect che richiama la funzione soprastante ogni volta che cambia il token
     useEffect(() => {getAuthorData(token)}, [token])
+
+    useEffect(manageToken, [])
+
 
     return (
         <LoginContext.Provider value={value}>

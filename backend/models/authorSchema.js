@@ -26,6 +26,7 @@ const authorSchema = new Schema(
             type: String
         },
         createdAt: Date,
+        googleId: String
         
     }
     ,

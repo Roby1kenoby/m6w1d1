@@ -12,3 +12,19 @@
     display: flex;
     justify-content: space-between;
 }
+
+#googleLoginWrapper{
+    margin-top: 1em;
+}
+
+#googleLoginWrapper button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#googleLoginWrapper p{
+    margin: 0;
+    flex-grow: 2;
+}

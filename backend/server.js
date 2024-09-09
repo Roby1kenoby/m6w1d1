@@ -10,6 +10,8 @@ import mongoDbConnection from './db.js'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import cors from 'cors'
+import passport from 'passport'
+import googleStrategy from './configs/passport.config.js'
 
 //creo il server
 const server = express()
@@ -33,7 +35,8 @@ server.use(cors())
 //     console.log(err)
 //     })
 
-
+// importo passport con la strategia configurata per google
+passport.use('google', googleStrategy)
 
 
 // collegamento al mongoDB se uso il file importato

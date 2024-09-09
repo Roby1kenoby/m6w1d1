@@ -39,3 +39,18 @@ export const Me = async(token) => {
         console.log(error)
     }
 }
+
+export const LoginWithGoogle = async function() {
+    window.location.href='http://localhost:3001/auth/login-google'
+    // try {
+    //     const resp = await fetch(URI+'login-google', {
+    //         method: 'GET',
+    //     })
+    //     console.log(resp)
+    //     const data = await resp.json()
+    //     console.log(data)
+    //     return data
+    // } catch (error) {
+    //     console.log(error)
+    // }
+}
