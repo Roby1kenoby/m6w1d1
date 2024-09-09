@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
-const URI = 'http://localhost:3001/blogPosts/'
+const URI = `${process.env.REACT_APP_API_URL}/blogPosts/`
 
 export const getPostComments = async function(id, token){
     try {

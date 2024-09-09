@@ -1,6 +1,6 @@
 // file che contiene tutte le operazioni CRUD usate dall'app per le questioni dell'autore
-const URI = 'http://localhost:3001/authors/'
-
+const URI = `${process.env.REACT_APP_API_URL}/authors/`
+console.log(URI)
 // se devo passare dei file, devo avere file come argomento
 export const NewAuthor = async (authorData, file) => {
     try {

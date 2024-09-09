@@ -49,5 +49,5 @@ export const callbackGoogle = async (req,res) => {
 	
     const token = req.user
     // effettuo il redirect alla home
-	res.redirect(`http://localhost:3000/?token=${token}`)
+	res.redirect(`${process.env.HOST}:${process.env.FRONTEND_PORT}/?token=${token}`)
 }

@@ -1,4 +1,4 @@
-const URI = 'http://localhost:3001/auth/'
+const URI = `${process.env.REACT_APP_API_URL}/auth/`
 
 export const Login = async (loginData) => {
     try {
@@ -41,16 +41,6 @@ export const Me = async(token) => {
 }
 
 export const LoginWithGoogle = async function() {
-    window.location.href='http://localhost:3001/auth/login-google'
-    // try {
-    //     const resp = await fetch(URI+'login-google', {
-    //         method: 'GET',
-    //     })
-    //     console.log(resp)
-    //     const data = await resp.json()
-    //     console.log(data)
-    //     return data
-    // } catch (error) {
-    //     console.log(error)
-    // }
+    //redirect alla rotta in cui faccio il login con google, che davanti ha passport 
+    window.location.href=`${URI}/login-google`
 }
