@@ -7,6 +7,7 @@ import NewBlogPost from "./views/new/New";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import del contesto dell'utente loggato
 import {LoginContext} from "./components/login/LoginContextProvider";
+import NotFound from "./views/404/NotFound";
 
 function App() {
   const {token} = useContext(LoginContext)
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           {token && <Route path="/blog/:id" element={<Blog />} />}
           {token &&<Route path="/new" element={<NewBlogPost />} />}
+          <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer />
       </Router>

@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
 import { Button, Container, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { LoginContext } from "../login/LoginContextProvider";
 import "./styles.css";
 const NavBar = props => {
-  const {token} = useContext(LoginContext)
+  const {token, setToken} = useContext(LoginContext)
+  const navigate = useNavigate()
+  const logout = function(){
+    localStorage.clear()
+    setToken('')
+    navigate('/')
+  }
   return (
     <Navbar expand="lg" className="blog-navbar" fixed="top">
       <Container className="justify-content-between">
@@ -26,6 +32,9 @@ const NavBar = props => {
           </svg>
           Nuovo Articolo
         </Button>}
+        {token && <Button
+        variant="dark"
+        onClick={logout}>Logout</Button>}
       </Container>
     </Navbar>
   );
