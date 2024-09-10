@@ -39,7 +39,8 @@ export const loginUser = async (req,res) => {
         }
     )
 }   
-// la /me dovrebbe scompattare il jwt e restituire i dati all'interno, o quelli trovati nel db
+// la procedura di authentication mette nella requeste i dati dell'utente loggato, quindi
+// è sufficiente pescarli da lì
 export const getUserData = (req,res) => {
     return res.send(req.loggedUser);
 }
